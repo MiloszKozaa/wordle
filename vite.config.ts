@@ -1,19 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-   css: {
+  resolve: {
+    alias: [{ find: '@', replacement: '/src' }],
+  },
+  css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import "./src/styles/_animations.scss";
-          @import "./src/styles/_sizes.scss";
-          @import "./src/styles/_mixins.scss";
-          @import "./src/styles/_colors.scss";
-        `
-      }
-    }
-  }
-})
+          @import "@/styles/_animations.scss";
+          @import "@/styles/_sizes.scss";
+          @import "@/styles/_mixins.scss";
+          @import "@/styles/_colors.scss";
+        `,
+      },
+    },
+  },
+});

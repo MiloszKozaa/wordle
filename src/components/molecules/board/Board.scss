@@ -1,0 +1,6 @@
+.board {
+  @include flex(column);
+  .board-row {
+    @include flex();
+  }
+}

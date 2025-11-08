@@ -6,7 +6,7 @@ interface ISize {
   size?: Size;
 }
 
-interface IButtonProps extends HTMLAttributes<HTMLButtonElement>, ISize {}
+interface IButtonProps extends HTMLAttributes<HTMLButtonElement>, ISize { disabled?: boolean}
 
 const Button = ({ size = 'DEFAULT', ...props }: IButtonProps) => {
   const className = classNames(['button', props.className], { size });
