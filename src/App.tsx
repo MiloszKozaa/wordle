@@ -1,22 +1,8 @@
 import './App.css';
-import { Board, Keyboard } from './components/molecules';
+import AppProviders from './providers/AppProviders';
 
-function App() {
-  // useKeyDownListener();
-  return (
-    <>
-      <Board
-        board={{
-          status: 'IN_PROGRESS',
-          rows: new Array(6).fill({
-            isCompleted: false,
-            letters: new Array(5).fill(''),
-          }),
-        }}
-      />
-      <Keyboard />
-    </>
-  );
-}
+const App = () => {
+  return <AppProviders />;
+};
 
 export default App;

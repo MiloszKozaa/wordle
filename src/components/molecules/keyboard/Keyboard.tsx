@@ -18,10 +18,11 @@ const Keyboard = ({ onSelect, onSubmit }: IKeyboardProps) => {
 
   return (
     <div className='keyboard'>
-      {letters.map(row => (
-        <div className='keyboard-row'>
-          {row.map(letter => (
+      {letters.map((row, rowIndex) => (
+        <div key={rowIndex} className='keyboard-row'>
+          {row.map((letter, letterIndex) => (
             <Button
+              key={letterIndex}
               disabled={isAlt && !letter.alt}
               onClick={() => onSelect && onSelect(getLetter(letter))}>
               {getLetter(letter)}

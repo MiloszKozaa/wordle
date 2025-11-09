@@ -1,34 +1,28 @@
 import { Input } from '@/components/atoms';
+import type { Coordinates, IBoard } from '@/store';
 import './Board.scss';
 
 // type Board = string[][];
 
-type Status = 'COMPLETED' | 'FAILED' | 'IN_PROGRESS';
-
-export interface IBoardRow {
-  isCompleted: boolean;
-  letters: string[];
-}
-
-export interface IBoard {
-  status: Status;
-  rows: IBoardRow[];
-}
-
-type Coordinates = [number, number];
-
 interface IBoardProps {
   board: IBoard;
-  focusedInput?: Coordinates;
+  coordinates: Coordinates;
 }
 
-const Board = ({ board }: IBoardProps) => {
+const Board = ({ board, coordinates }: IBoardProps) => {
+  const [rowCooridnate, letterCoordinate] = coordinates;
   return (
     <div className='board'>
-      {board.rows.map(row => (
-        <div className='board-row'>
-          {row.letters.map(letter => (
-            <Input>{letter}</Input>
+      {board.rows.map((row, rowIndex) => (
+        <div key={rowIndex} className='board-row'>
+          {row.letters.map((letter, letterIndex) => (
+            <Input
+              key={letterIndex}
+              active={
+                rowIndex === rowCooridnate && letterIndex === letterCoordinate
+              }>
+              {letter}
+            </Input>
           ))}
         </div>
       ))}

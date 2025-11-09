@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 
-export const useKeyDownListener = () => {
-  const onKeyDown = (event: KeyboardEvent) => console.log(event.key);
+interface IUseKeyDownListener {
+  onKeyDown: (event: KeyboardEvent) => void;
+}
+
+export const useKeyDownListener = ({ onKeyDown }: IUseKeyDownListener) => {
   useEffect(() => {
     addEventListener('keydown', onKeyDown);
 
